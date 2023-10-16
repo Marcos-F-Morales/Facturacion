@@ -24,7 +24,7 @@ public class inicioSesion extends javax.swing.JFrame {
     public inicioSesion() {
         initComponents();
         this.setLocationRelativeTo(this);
-        setImageLabel(fondoAzul2, "C:\\Users\\pablo\\OneDrive\\Documentos\\NetBeansProjects\\interfazProyecto\\src\\imagen_interfaz\\fondo_azul2.jpg");
+        setImageLabel(fondoAzul2, "C:src\\imagen_interfaz\\fondo_azul2.jpg");
     }
 
     /**
@@ -227,7 +227,7 @@ public class inicioSesion extends javax.swing.JFrame {
     private void usuario_textMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuario_textMousePressed
     if(usuario_text.getText().equals("Ingrese el nombre de usuario")){
     usuario_text.setText("");
-    usuario_text.setForeground(Color.black);
+    usuario_text.setForeground(Color.white);
     }
     if(String.valueOf(contrasena_text.getPassword()).isEmpty()){
     contrasena_text.setText("**********");
@@ -238,7 +238,7 @@ public class inicioSesion extends javax.swing.JFrame {
     private void contrasena_textMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasena_textMousePressed
     if( String.valueOf(contrasena_text.getPassword()).equals("**********")){
     contrasena_text.setText("");
-    contrasena_text.setForeground(Color.black);
+    contrasena_text.setForeground(Color.white);
     }
     if(usuario_text.getText().isEmpty()){
     usuario_text.setText("Ingrese el nombre de usuario");
@@ -251,7 +251,9 @@ public class inicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_InicioSesionBtmMousePressed
 
     private void InicioSesionBtmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionBtmActionPerformed
-    javax.swing.JOptionPane.showMessageDialog(this, "Usuario" + usuario_text.getText() );
+    Seleccion abrir = new Seleccion();
+    abrir.setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_InicioSesionBtmActionPerformed
 
     private void RegistrarBtmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarBtmActionPerformed
