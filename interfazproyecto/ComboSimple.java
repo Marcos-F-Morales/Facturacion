@@ -6,6 +6,7 @@
 package interfazproyecto;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -16,10 +17,12 @@ import javax.swing.JLabel;
  * @author pablo
  */
 public class ComboSimple extends javax.swing.JFrame {
+    String InicioEstadia = null;
     String combos[] = {"Combo Economico", "Combo Estandar", "Combo de lujo"};
     double precios[] ={60,80,120};
     double precio = 0;
     int noche = 0;
+    ArrayList<FacturaCarrito> listaVenta;
     /**
      * Creates new form ComboSimple
      */
@@ -30,8 +33,7 @@ public class ComboSimple extends javax.swing.JFrame {
         DefaultComboBoxModel ComboModel = new DefaultComboBoxModel(combos);
         ComCombos.setModel(ComboModel);
         
-        
-        
+        listaVenta = new ArrayList();
     }
     
     public String aMoneda(double precio){
@@ -58,7 +60,7 @@ public class ComboSimple extends javax.swing.JFrame {
         ComCombos = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        YearInicio = new javax.swing.JSpinner();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
@@ -66,8 +68,8 @@ public class ComboSimple extends javax.swing.JFrame {
         Unitario = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         SpnNoches = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
+        diasInicio = new javax.swing.JSpinner();
+        MesInicio = new javax.swing.JSpinner();
         Total = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,8 +140,8 @@ public class ComboSimple extends javax.swing.JFrame {
         jLabel6.setText("fecha de inicio");
         bd.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
-        bd.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, -1, -1));
+        YearInicio.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
+        bd.add(YearInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         bd.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 350, 10));
@@ -159,7 +161,7 @@ public class ComboSimple extends javax.swing.JFrame {
 
         Unitario.setBackground(new java.awt.Color(255, 255, 255));
         Unitario.setForeground(new java.awt.Color(255, 255, 255));
-        Unitario.setText("jLabel9");
+        Unitario.setText("60.0Q");
         bd.add(Unitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, -1, -1));
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
@@ -173,15 +175,15 @@ public class ComboSimple extends javax.swing.JFrame {
         });
         bd.add(SpnNoches, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, null, 31, 1));
-        bd.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
+        diasInicio.setModel(new javax.swing.SpinnerNumberModel(1, null, 31, 1));
+        bd.add(diasInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
 
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        bd.add(jSpinner4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
+        MesInicio.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        bd.add(MesInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
 
         Total.setBackground(new java.awt.Color(255, 255, 255));
         Total.setForeground(new java.awt.Color(255, 255, 255));
-        Total.setText("jLabel9");
+        Total.setText("60.0Q");
         bd.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -207,9 +209,24 @@ public class ComboSimple extends javax.swing.JFrame {
     }//GEN-LAST:event_SpnNochesStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Carrito abrir = new Carrito();
-    abrir.setVisible(true);
+    int dia = (int) diasInicio.getValue();
+    int mes = (int) MesInicio.getValue();
+    int año = (int) YearInicio.getValue();
+    String InicioEstadia = dia + "/" + mes + "/" + año;
+        
+    FacturaCarrito carrito = new FacturaCarrito();
+    carrito.setId(ComCombos.getSelectedIndex());
+    carrito.setCombo(ComCombos.getSelectedItem().toString());
+    carrito.setInicioEstadia(InicioEstadia);
+    carrito.setPrecio(precio*noche);
+    carrito.setNoches(noche);
+    
+    listaVenta.add(carrito);
+    
+    Carrito formCarrito = new Carrito(listaVenta);
+    formCarrito.setVisible(true);
     this.setVisible(false);
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void CalcularPrecio(){
@@ -263,10 +280,13 @@ public class ComboSimple extends javax.swing.JFrame {
     public static javax.swing.JComboBox<String> ComCombos;
     private javax.swing.JLabel Fondo_madera;
     private javax.swing.JLabel Hotel;
+    private javax.swing.JSpinner MesInicio;
     private javax.swing.JSpinner SpnNoches;
     private javax.swing.JLabel Total;
     private javax.swing.JLabel Unitario;
+    private javax.swing.JSpinner YearInicio;
     private javax.swing.JPanel bd;
+    private javax.swing.JSpinner diasInicio;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -280,8 +300,5 @@ public class ComboSimple extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
     // End of variables declaration//GEN-END:variables
 }
