@@ -16,6 +16,19 @@ public class FacturaCarrito {
     private int noches;
     private double precio;
 
+    public FacturaCarrito(String combo, String inicioEstadia, int noches, double precio) {
+        this.combo = combo;
+        this.InicioEstadia = inicioEstadia;
+        this.noches = noches;
+        this.precio = precio;
+    }
+    
+    public FacturaCarrito() {
+        this.combo = combo;
+        this.InicioEstadia = InicioEstadia;
+        this.noches = noches;
+        this.precio = precio;
+    }
     /**
      * @return the id
      */

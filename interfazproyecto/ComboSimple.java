@@ -18,22 +18,33 @@ import javax.swing.JLabel;
  */
 public class ComboSimple extends javax.swing.JFrame {
     String InicioEstadia = null;
-    String combos[] = {"Combo Economico", "Combo Estandar", "Combo de lujo"};
-    double precios[] ={60,80,120};
-    double precio = 0;
+    String combos[] = {"Combo Simple"};
+    double precios[] ={60};
+    double precioU = 0;
     int noche = 0;
-    ArrayList<FacturaCarrito> listaVenta;
+    ArrayList<FacturaCarrito> ListaVenta;
     /**
      * Creates new form ComboSimple
      */
     public ComboSimple() {
         initComponents();
         this.setLocationRelativeTo(this);
-        setImageLabel(Fondo_madera, "C:\\Users\\pablo\\OneDrive\\Documentos\\NetBeansProjects\\interfazProyecto\\src\\imagen_interfaz\\madera.jpg");
+        setImageLabel(Fondo_madera, "C:src\\imagen_interfaz\\madera.jpg");
         DefaultComboBoxModel ComboModel = new DefaultComboBoxModel(combos);
         ComCombos.setModel(ComboModel);
         
-        listaVenta = new ArrayList();
+        ListaVenta = new ArrayList();
+    }
+    
+    public ComboSimple(ArrayList listaVenta) {
+        initComponents();
+        this.setLocationRelativeTo(this);
+        setImageLabel(Fondo_madera, "C:src\\imagen_interfaz\\madera.jpg");
+        DefaultComboBoxModel ComboModel = new DefaultComboBoxModel(combos);
+        
+        ComCombos.setModel(ComboModel);
+        
+        ListaVenta = listaVenta;
     }
     
     public String aMoneda(double precio){
@@ -218,22 +229,22 @@ public class ComboSimple extends javax.swing.JFrame {
     carrito.setId(ComCombos.getSelectedIndex());
     carrito.setCombo(ComCombos.getSelectedItem().toString());
     carrito.setInicioEstadia(InicioEstadia);
-    carrito.setPrecio(precio*noche);
+    carrito.setPrecio(precioU*noche);
     carrito.setNoches(noche);
     
-    listaVenta.add(carrito);
+    ListaVenta.add(carrito);
     
-    Carrito formCarrito = new Carrito(listaVenta);
+    Carrito formCarrito = new Carrito(ListaVenta);
     formCarrito.setVisible(true);
     this.setVisible(false);
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void CalcularPrecio(){
-    precio = precios[ComCombos.getSelectedIndex()];
+    precioU = precios[ComCombos.getSelectedIndex()];
     noche = Integer.parseInt(SpnNoches.getValue().toString());
-    Total.setText(aMoneda(precio*noche));
-    Unitario.setText(aMoneda(precio));
+    Total.setText(aMoneda(precioU*noche));
+    Unitario.setText(aMoneda(precioU));
     }
     /**
      * @param args the command line arguments

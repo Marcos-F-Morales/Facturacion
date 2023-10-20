@@ -5,7 +5,6 @@
  */
 package interfazproyecto;
 
-import static interfazproyecto.ComboSimple.ComCombos;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -18,22 +17,37 @@ import javax.swing.JLabel;
  * @author pablo
  */
 public class ComboDoble extends javax.swing.JFrame {
-    String combos[] = {"Combo Economico", "Combo Estandar", "Combo de lujo", "Combo luna de mIel estandar", "Combo luna de miel de julo"};
-    double precios[] ={100,150,80, 260, 390};
+    String InicioEstadia = null;
+    String combos[] = {"Combo Doble", };
+    double precios[] ={160};
     double precio = 0;
     int noche = 0;
-    ArrayList<FacturaCarrito> listaVenta;
+    ArrayList<FacturaCarrito> ListaVenta;
+   
+    
     /**
      * Creates new form ComboDoble
      */
     public ComboDoble() {
         initComponents();
         this.setLocationRelativeTo(this);
-        setImageLabel(Fondo_madera, "C:\\Users\\pablo\\OneDrive\\Documentos\\NetBeansProjects\\interfazProyecto\\src\\imagen_interfaz\\madera.jpg");
+        setImageLabel(Fondo_madera, "C:src\\imagen_interfaz\\madera.jpg");
         DefaultComboBoxModel ComboModel = new DefaultComboBoxModel(combos);
         ComCombos.setModel(ComboModel);
         
-        listaVenta = new ArrayList();
+        ListaVenta = new ArrayList();
+        
+    }
+    
+    public ComboDoble(ArrayList listaVenta) {
+        initComponents();
+        this.setLocationRelativeTo(this);
+        setImageLabel(Fondo_madera, "C:src\\imagen_interfaz\\madera.jpg");
+        DefaultComboBoxModel ComboModel = new DefaultComboBoxModel(combos);
+        
+        ComCombos.setModel(ComboModel);
+        
+        ListaVenta = listaVenta;
     }
 
     /**
@@ -48,6 +62,7 @@ public class ComboDoble extends javax.swing.JFrame {
         bd = new javax.swing.JPanel();
         Hotel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
         Fondo_madera = new javax.swing.JLabel();
         bd1 = new javax.swing.JPanel();
         Hotel1 = new javax.swing.JLabel();
@@ -74,7 +89,6 @@ public class ComboDoble extends javax.swing.JFrame {
         bd2 = new javax.swing.JPanel();
         Hotel2 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
         Fondo_madera2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -110,6 +124,16 @@ public class ComboDoble extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         bd.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 270, -1));
+
+        jButton1.setBackground(new java.awt.Color(255, 153, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Reservar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        bd.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 370, 120, 60));
 
         Fondo_madera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen_interfaz/madera.jpg"))); // NOI18N
         Fondo_madera.setText("jLabel1");
@@ -192,7 +216,7 @@ public class ComboDoble extends javax.swing.JFrame {
 
         Unitario.setBackground(new java.awt.Color(255, 255, 255));
         Unitario.setForeground(new java.awt.Color(255, 255, 255));
-        Unitario.setText("jLabel9");
+        Unitario.setText("160.0Q");
         bd1.add(Unitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, -1, -1));
 
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
@@ -206,7 +230,7 @@ public class ComboDoble extends javax.swing.JFrame {
         });
         bd1.add(SpnNoches, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
 
-        jSpinner3.setModel(new javax.swing.SpinnerListModel(new String[] {"empty"}));
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
         bd1.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
 
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
@@ -214,7 +238,7 @@ public class ComboDoble extends javax.swing.JFrame {
 
         Total.setBackground(new java.awt.Color(255, 255, 255));
         Total.setForeground(new java.awt.Color(255, 255, 255));
-        Total.setText("jLabel9");
+        Total.setText("120.0Q");
         bd1.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, -1, -1));
 
         bd2.setBackground(new java.awt.Color(0, 0, 0));
@@ -230,16 +254,6 @@ public class ComboDoble extends javax.swing.JFrame {
 
         jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
         bd2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 270, -1));
-
-        jButton1.setBackground(new java.awt.Color(255, 153, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Reservar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        bd2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 370, 120, 60));
 
         Fondo_madera2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen_interfaz/madera.jpg"))); // NOI18N
         Fondo_madera2.setText("jLabel1");
@@ -304,7 +318,6 @@ public class ComboDoble extends javax.swing.JFrame {
 
         Unitario1.setBackground(new java.awt.Color(255, 255, 255));
         Unitario1.setForeground(new java.awt.Color(255, 255, 255));
-        Unitario1.setText("60.0Q");
         bd2.add(Unitario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, -1, -1));
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
@@ -326,7 +339,6 @@ public class ComboDoble extends javax.swing.JFrame {
 
         Total1.setBackground(new java.awt.Color(255, 255, 255));
         Total1.setForeground(new java.awt.Color(255, 255, 255));
-        Total1.setText("60.0Q");
         bd2.add(Total1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, -1, -1));
 
         bd1.add(bd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -368,9 +380,9 @@ public class ComboDoble extends javax.swing.JFrame {
         carrito.setPrecio(precio*noche);
         carrito.setNoches(noche);
 
-        listaVenta.add(carrito);
+        ListaVenta.add(carrito);
 
-        Carrito formCarrito = new Carrito(listaVenta);
+        Carrito formCarrito = new Carrito(ListaVenta);
         formCarrito.setVisible(true);
         this.setVisible(false);
 
