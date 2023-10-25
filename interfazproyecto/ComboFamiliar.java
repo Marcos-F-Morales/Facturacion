@@ -370,6 +370,12 @@ public class ComboFamiliar extends javax.swing.JFrame {
         carrito.setId(ComCombos.getSelectedIndex());
         carrito.setCombo(ComCombos.getSelectedItem().toString());
         carrito.setInicioEstadia(InicioEstadia);
+        if(noche == 0){
+        noche += 1;
+        }
+        if(precio == 0){
+        precio += 200;
+        }
         carrito.setPrecio(precio*noche);
         carrito.setNoches(noche);
 

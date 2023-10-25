@@ -75,6 +75,7 @@ public class Seleccion extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         ImgSimple = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -97,7 +98,7 @@ public class Seleccion extends javax.swing.JFrame {
         Hotel.setFont(new java.awt.Font("Vladimir Script", 0, 36)); // NOI18N
         Hotel.setForeground(new java.awt.Color(255, 255, 255));
         Hotel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Hotel.setText("hotel generico");
+        Hotel.setText("Valkiria");
         Hotel.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jPanel1.add(Hotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 320, -1));
 
@@ -171,6 +172,15 @@ public class Seleccion extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setBackground(new java.awt.Color(255, 153, 0));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Tus Reservas");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -178,16 +188,20 @@ public class Seleccion extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(163, 163, 163))
+                .addGap(32, 32, 32)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                .addGap(193, 193, 193))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 3, Short.MAX_VALUE))
+            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 40));
@@ -329,6 +343,12 @@ public class Seleccion extends javax.swing.JFrame {
     this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    Reserva abrir = new Reserva(compra);
+    abrir.setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -383,6 +403,7 @@ public class Seleccion extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -157,6 +157,7 @@ public class ComboDoble extends javax.swing.JFrame {
         Fondo_madera1.setText("jLabel1");
         bd1.add(Fondo_madera1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 750, 140));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen_interfaz/habitacion_2.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         bd1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 330, 290));
 
@@ -377,6 +378,12 @@ public class ComboDoble extends javax.swing.JFrame {
         carrito.setId(ComCombos.getSelectedIndex());
         carrito.setCombo(ComCombos.getSelectedItem().toString());
         carrito.setInicioEstadia(InicioEstadia);
+        if(noche == 0){
+        noche += 1;
+        }
+        if(precio == 0){
+        precio += 160;
+        }
         carrito.setPrecio(precio*noche);
         carrito.setNoches(noche);
 
@@ -469,7 +476,7 @@ public class ComboDoble extends javax.swing.JFrame {
     private javax.swing.JPanel bd2;
     private javax.swing.JSpinner diasInicio;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

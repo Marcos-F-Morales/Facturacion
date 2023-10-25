@@ -22,6 +22,7 @@ public class ComboSimple extends javax.swing.JFrame {
     double precios[] ={60};
     double precioU = 0;
     int noche = 0;
+    
     ArrayList<FacturaCarrito> ListaVenta;
     /**
      * Creates new form ComboSimple
@@ -92,7 +93,7 @@ public class ComboSimple extends javax.swing.JFrame {
         Hotel.setFont(new java.awt.Font("Vladimir Script", 0, 36)); // NOI18N
         Hotel.setForeground(new java.awt.Color(255, 255, 255));
         Hotel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Hotel.setText("hotel generico");
+        Hotel.setText("Valkiria");
         Hotel.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         bd.add(Hotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 320, -1));
 
@@ -229,6 +230,12 @@ public class ComboSimple extends javax.swing.JFrame {
     carrito.setId(ComCombos.getSelectedIndex());
     carrito.setCombo(ComCombos.getSelectedItem().toString());
     carrito.setInicioEstadia(InicioEstadia);
+    if(noche == 0){
+        noche += 1;
+    }
+    if(precioU == 0){
+        precioU += 60;
+    }
     carrito.setPrecio(precioU*noche);
     carrito.setNoches(noche);
     

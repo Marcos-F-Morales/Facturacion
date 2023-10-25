@@ -64,7 +64,7 @@ public class inicioSesion extends javax.swing.JFrame {
         Hotel.setFont(new java.awt.Font("Vladimir Script", 0, 36)); // NOI18N
         Hotel.setForeground(new java.awt.Color(255, 255, 255));
         Hotel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Hotel.setText("hotel generico");
+        Hotel.setText("Valkiria");
         Hotel.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         CinicioSesion.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
